@@ -3,6 +3,8 @@
 
 = Hardy-Weinberg equilibrium
 
+This section gives a derivation of Hardy-Weinberg equilibrium ("HWE" for short) for the case of one locus with two alleles at an autosomal locus in a diploid population.
+
 == Alleles and allele frequencies
 
 #let A = emph[A]
@@ -13,7 +15,7 @@ If there are #emph[P] copies of #A and #emph[Q] copies of #a, then the #emph[fre
 
 Note that:
 
-- #math.equation(alt: "Sum of allele counts in 2N", $P + Q = 2N$) due to individuals being diploid.
+- #math.equation(alt: "Sum of allele counts equals 2N", $P + Q = 2N$) due to individuals being diploid.
 - #math.equation(alt: "Allele frequencies sum to 1", $p + q = 1$).
 
 == Assumptions
@@ -30,6 +32,28 @@ We make the following simplifying assumptions:
 == Genotype frequencies in the next generation
 
 The genotypes in the next generation are given by #math.equation(block: false, alt: "Genotype frequencies in the next generation", $(p+q)^2 = p^2 + 2 p q + q^2$).
+
+To get to the previous equation:
+
++ To generate a single offspring, we have to "reach in" to our infinitely large pool of gametes twice.
+  (Twice because we need to "fill" two spots for alleles in diploids.)
++ Each time we reach for a gamete, we get an #A with probability #emph[p] #strong[or] an #a with probability #emph[q].
+  This sampling is an "or" situation, so the total probability is #emph[p + q].
+  (You will note that this probabilty sums to 1.
+  This is not an error.)
+  The probabilty that we sample an allele is indeed 1.
+  The sum #emph[p + q] just records for us the probabilities of sampling each possible allele.)
++ We need to repeat the allele picking process twice.
+  Since our gamete pool is infinitely large, the probabilities of picking each allele do not change with each subsequent draw.
++ The final genotype is an #strong[and] statment, meaning we need to multiply probabilities together, which gives us #emph[(p+q)#super[2]].
++ This expression expands to the sum of the probabilities of each genotype.
+
+An alternate approach is to invert the logic:
+
++ The offspring could be #A#A, which means picking #A twice. "#A #strong[and] #A" has probability #emph[p#super[2]].
++ The offspring could be #A#a, which means picking #A first then #a #emph[or] #a first then #A.
+  The probability is #emph[pq + qp], or #emph[2pq].
++ The offspring could be #a#a, which means picking #a twice. "#a #strong[and] #a" has probability #emph[q#super[2]].
 
 == Allele freqiencies in the offspring generation
 
