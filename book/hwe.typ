@@ -57,31 +57,49 @@ Further note that the #emph[genotype] frequencies will remain unchanged in all f
 To see that genotype frequencies remain constant, work out what will happen in the next offspring generation.
 (In other words, the grand-child generation with respect to our initial parental generation.)
 
+A major implication of HWE is that the genotype frequencies are specific functions of the allele frequencies (#ref(<hwegenofreqs>)).
+Given an allele frequency, #emph[p], the frequency of the genotype homozygous for that allele is #emph[p#super[2]].
+The frequency for the heterozygous genotype is #emph[2pq] and the frequency of the other homozygote is #emph[q#super[2]].
+#ref(<hwegenofreqs>) plots the relationship between allele and genotype frequency under HWE.
+
 #figure(
   cetz.canvas({
     plot.plot(
       size: (10, 10),
-      x-label: [Frequency of the #A allele (#emph[p])],
+      x-label: [Allele frequency],
       y-label: "Genotype frequency",
       x-ticks: (0, 0.5, 1),
       y-ticks: (0, 0.5, 1),
       {
-        plot.add(p => p * p, domain: (0, 1), label: "AA", style: (stroke: (thickness: 0.1, paint: rgb("#440154FF"))))
+        plot.add(
+          p => p * p,
+          domain: (0, 1),
+          label: "Homozygote",
+          style: (stroke: (thickness: 0.1, paint: rgb("#440154FF"))),
+        )
         plot.add(
           p => 2 * p * (1 - p),
           domain: (0, 1),
-          label: "Aa",
+          label: "Heterozygote",
           style: (stroke: (thickness: 0.1, paint: rgb("#20A387FF"))),
         )
         plot.add(
           p => (1 - p) * (1 - p),
           domain: (0, 1),
-          label: "aa",
+          label: "Alternate homozygote",
           style: (stroke: (thickness: 0.1, paint: rgb("#FDE725FF"))),
         )
       },
     )
   }),
-  caption: [When a population is in Hardy-Weinberg equilibrium ("HWE"), the genotype frequencies are precise functions of the underlying allele frequencies.],
+  caption: [When a population is in Hardy-Weinberg equilibrium ("HWE"), the genotype frequencies are precise functions of the underlying allele frequencies.
+    The #emph[x] axis represents the allele frequency.
+    This is the frequency of our "focal" allele that we currently care about.
+    Depending on the context, this could be a disease-causing mutation, or any mutation that we label with symbols such as #A or #a.
+    The #emph[y] axis shows the frequencies of the three possible genotypes.
+    First, we have the genotype that is homozygouse for our "focal" allele.
+    Second, the heterozygous genotype.
+    Finally, the genotype homozygous for the alternate allele (the allele that is not our "focal" allele).
+  ],
   alt: "Graph showing genotype frequencies as a function of the frequency of the #A allele.",
-)
+) <hwegenofreqs>
