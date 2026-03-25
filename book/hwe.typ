@@ -1,5 +1,5 @@
 #import "@preview/cetz:0.4.2"
-#import "@preview/cetz-plot:0.1.3": plot, chart
+#import "@preview/cetz-plot:0.1.3": chart, plot
 
 = Hardy-Weinberg equilibrium
 
@@ -9,7 +9,7 @@
 #let a = emph[a]
 
 Consider the case of two alleles, #A and #a, at an auutosomal locus in a population of #emph[N] diploids.
-If there are #emph[P] copies of #A and #emph[Q] copies of #a, then the #emph[frequencies] of the two alleles are #math.equation(block:true, alt:"Frequency of the #emph[A] allele", $p = frac(P,2N)$) and #math.equation(block:true, alt: "Frequency of the #emph[a] allele.", $q = frac(Q,2N),$) respectively.
+If there are #emph[P] copies of #A and #emph[Q] copies of #a, then the #emph[frequencies] of the two alleles are #math.equation(block: true, alt: "Frequency of the #emph[A] allele", $p = frac(P, 2N)$) and #math.equation(block: true, alt: "Frequency of the #emph[a] allele.", $q = frac(Q, 2N),$) respectively.
 
 Note that:
 
@@ -29,15 +29,15 @@ We make the following simplifying assumptions:
 
 == Genotype frequencies in the next generation
 
-The genotypes in the next generation are given by #math.equation(block: false, alt: "Genotype frequencies in the next generation", $(p+q)^2 = p^2 + 2 p q  + q^2$).
+The genotypes in the next generation are given by #math.equation(block: false, alt: "Genotype frequencies in the next generation", $(p+q)^2 = p^2 + 2 p q + q^2$).
 
 == Allele freqiencies in the offspring generation
 
 Let's define #math.equation(alt: "symbol for frequency of #A in the next generation", $p'$) as the frequency of #A in the offspring generation.
 We will also define #math.equation(alt: "symbol for the number of copies of #A in the offspring generation", $P'$) as the number of copies of #A in the offspring generation.
 
-The #emph[number] of #A alleles in the next generation is #math.equation(block:true, alt: "Number of copies of #A in the offspring generation", $P'=2 N p^2 + frac(2 N,2) times 2 p q$).
-Therefore, the #emph[frequency] of #A in the next generation is #math.equation(block: true, alt: "Frequency of #A in the next generation", $p' &= frac(2 N p^2 + frac(2 N, 2) times 2 p q ,2 N)\ &= frac(2 N p^2 + 2 N p q ,2 N)\ &= p^2 +  p q  \ &= p(p+q) \ &= p $)
+The #emph[number] of #A alleles in the next generation is #math.equation(block: true, alt: "Number of copies of #A in the offspring generation", $P'=2 N p^2 + frac(2 N, 2) times 2 p q$).
+Therefore, the #emph[frequency] of #A in the next generation is #math.equation(block: true, alt: "Frequency of #A in the next generation", $p' &= frac(2 N p^2 + frac(2 N, 2) times 2 p q, 2 N)\ &= frac(2 N p^2 + 2 N p q, 2 N)\ &= p^2 + p q \ &= p(p+q) \ &= p$)
 
 It follows that the frequency of #a in the offspring generation is #emph[q].
 
@@ -59,11 +59,29 @@ To see that genotype frequencies remain constant, work out what will happen in t
 
 #figure(
   cetz.canvas({
-    plot.plot(size: (10, 10), x-label: [Frequency of the #A allele (#emph[p])], y-label: "Genotype frequency",  x-ticks: (0, 0.5, 1), y-ticks: (0, 0.5, 1), {
-    plot.add(p => p*p, domain: (0,1), label: "AA", style: (stroke: (thickness: 0.1, paint: rgb("#440154FF"))))
-    plot.add(p => 2*p*(1-p), domain: (0,1), label: "Aa", style: (stroke: (thickness: 0.1, paint: rgb("#20A387FF"))))
-    plot.add(p => (1-p)*(1-p), domain: (0,1), label: "aa", style: (stroke: (thickness: 0.1, paint: rgb("#FDE725FF"))))
-    })
+    plot.plot(
+      size: (10, 10),
+      x-label: [Frequency of the #A allele (#emph[p])],
+      y-label: "Genotype frequency",
+      x-ticks: (0, 0.5, 1),
+      y-ticks: (0, 0.5, 1),
+      {
+        plot.add(p => p * p, domain: (0, 1), label: "AA", style: (stroke: (thickness: 0.1, paint: rgb("#440154FF"))))
+        plot.add(
+          p => 2 * p * (1 - p),
+          domain: (0, 1),
+          label: "Aa",
+          style: (stroke: (thickness: 0.1, paint: rgb("#20A387FF"))),
+        )
+        plot.add(
+          p => (1 - p) * (1 - p),
+          domain: (0, 1),
+          label: "aa",
+          style: (stroke: (thickness: 0.1, paint: rgb("#FDE725FF"))),
+        )
+      },
+    )
   }),
-caption: [When a population is in Hardy-Weinberg equilibrium ("HWE"), the genotype frequencies are precise functions of the underlying allele frequencies.],
-alt: "Graph showing genotype frequencies as a function of the frequency of the #A allele.")
+  caption: [When a population is in Hardy-Weinberg equilibrium ("HWE"), the genotype frequencies are precise functions of the underlying allele frequencies.],
+  alt: "Graph showing genotype frequencies as a function of the frequency of the #A allele.",
+)

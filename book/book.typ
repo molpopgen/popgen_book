@@ -1,11 +1,11 @@
-#set document(title: [Population genetics notes], author: ("Kevin Thornton"))
+#set document(title: [Population genetics notes], author: "Kevin Thornton")
 
-#place(top + center, 
-{title()
-v(5pt)
-"Kevin Thornton"
-v(5pt)
-"UC Irvine"
+#place(top + center, {
+  title()
+  v(5pt)
+  "Kevin Thornton"
+  v(5pt)
+  "UC Irvine"
 })
 
 #pagebreak()
