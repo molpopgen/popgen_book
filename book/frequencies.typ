@@ -7,7 +7,7 @@
 
 == Basic definitions
 
-- A frequency is a real number #math.equation(alt: "greater than or equal to zero", $>= 0$) and #math.equation(alt:"less than or  equal to one", $<= 1$).
+- A frequency is a real number #math.equation(alt: "greater than or equal to zero", $>= 0$) and #math.equation(alt: "less than or  equal to one", $<= 1$).
 
 When a frequency of something is equal to zero, that thing is absent.
 For example, an allele frequency of zero means that the allele is not present.
@@ -19,8 +19,8 @@ We need to distinguish two different types of frequencies:
 - The frequency of something in the entire population.
 - The frequency of something in a #emph[sample] taken from a population.
 
-To see how these quantities differ, but are related: 
-  
+To see how these quantities differ, but are related:
+
 Consider a case were the #A#a genotype is present in 20% of individuals in the entire population.
 This is a statement about #emph[every] individual in, say, the entirety of contemporary Europe.
 When we study genetic variation in populations, we do so by studying a #emph[sample] of invididuals.
@@ -53,19 +53,19 @@ To solve this:
 
 #let n = 37 + 63 + 20
 #let num_alleles = (n, 2).product()
-#let num_copies = (2*nAA + nAa)
-#let result = num_copies/num_alleles
+#let num_copies = (2 * nAA + nAa)
+#let result = calc.round(num_copies / num_alleles, digits: 4)
 
 - We have a total of #n genotypes in our data.
 - We therefore have #num_alleles alleles in our data (due to organisms being diploid)
 - Each #A#A individual has two copies of #A.
 - Each #A#a genotype has one copy
-- Therefore, the number of copies of #A in our data is (#(2,nAA).product() + #nAa) which equals #num_copies.
+- Therefore, the number of copies of #A in our data is (#(2, nAA).product() + #nAa) which equals #num_copies.
 - Finally, our frequency is #num_copies / #num_alleles, which is #result.
 
 ==== Quick method
 
 For people who understand the method used above, the quick way to get allele frequency data from genotype data is to get the sum of the homozygote frequency with half the heterozygote frequency.
 
-#let result = nAA/n + 0.5 * nAa/n
-For our data, that sum is #nAA/#n + #math.equation(alt: "one-half",$frac(1,2)$)#nAa/#n, which equals #result.
+#let result = calc.round(nAA / n + 0.5 * nAa / n, digits: 4)
+For our data, that sum is #nAA/#n + #math.equation(alt: "one-half", $frac(1, 2)$)#nAa/#n, which equals #result.
