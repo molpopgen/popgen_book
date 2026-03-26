@@ -1,4 +1,5 @@
 #set document(title: [Population genetics notes], author: "Kevin Thornton")
+#set text(12pt)
 
 // Page break before every section (H1) heading
 #show heading.where(level: 1, outlined: true): it => {
