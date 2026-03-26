@@ -1,5 +1,6 @@
 BOOK_SOURCES:= book/book.typ \
-			   book/hwe.typ
+			   book/hwe.typ \
+			   book/frequencies.typ
 
 TARGETS:= book/book.pdf
 
