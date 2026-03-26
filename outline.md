@@ -11,6 +11,11 @@ The new format should satisfy both accessibility concerns and perhaps guide my i
 
 ## HWE
 
+## Applications of HWE
+
+* Mendelian disease risk
+* Ancestry assignment
+
 ## Drift
 
 ## Fitness and selection
